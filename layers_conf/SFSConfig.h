@@ -21,6 +21,7 @@
 #define BLOCK_ALIGN 2
 #define NOPFUSE 3
 #define LOCALFUSE 6
+#define CACHE 7
 
 // Default configuration files location
 #define DEFAULT_SDSCONFIG_PATH "conf_examples/default.ini"
@@ -51,6 +52,10 @@ typedef struct local_configuration {
     char* path;
 } local_config;
 
+typedef struct cache_configuration{
+   int mode;
+} cache_config;
+
 typedef struct log_configuration { int mode; } log_config;
 
 typedef struct sds_configuration {
@@ -59,6 +64,7 @@ typedef struct sds_configuration {
     block_align_config block_config;
     log_config logging_configuration;
     local_config local_config;
+    cache_config cache_config;
     GSList* layers;
 } configuration;
 

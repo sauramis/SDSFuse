@@ -10,6 +10,7 @@
 
 #include "layers_impl/align/alignfuse.h"
 #include "layers_impl/crypto/sfuse.h"
+#include "layers_impl/cache/cachefuse.h"
 #include "inih/ini.h"
 #include "logging/logdef.h"
 #include "layers_conf/SFSConfig.h"

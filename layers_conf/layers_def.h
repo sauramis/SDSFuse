@@ -71,4 +71,11 @@ struct multi_driver {
     void (*clean)();
 };
 
+
+struct cache_driver{
+    int (*cache_get)(const char *path, char *buf, size_t size, off_t offset, void *fi, struct fuse_operations nextlayer);
+    int (*cache_put)(const char *path, char *buf, size_t size, off_t offset, void *fi, struct fuse_operations nextlayer);   
+}
+
+
 #endif /*__LAYERSDEF_H__*/

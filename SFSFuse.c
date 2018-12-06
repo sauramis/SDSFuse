@@ -37,6 +37,11 @@ int compose_layers(struct fuse_operations** operations, configuration config) {
             case LOCALFUSE:
                 init_local_layer(operations, config);
                 break;
+	    case CACHE:
+		DEBUG_MSG("first attempt to cache");
+                init_cache_layer(operations, config);
+		//exit(0);
+		break;
             default:
                 return 1;
         }
@@ -101,7 +106,7 @@ int main(int argc, char* argv[]) {
        
     }
     fuse_opt_add_arg(&args, "-omodules=subdir,subdir=/");
-
+    //DEBUG_MSG("LOCAL FILE PATH : %s\n",local_file_path);
     LOG_INIT(local_file_path);
     DEBUG_MSG("Trying to load local configuration file %s\n", local_file_path);
     if (local_file_path!=NULL && file_exists(local_file_path)) {

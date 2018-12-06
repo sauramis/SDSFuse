@@ -18,7 +18,10 @@ int handle_section_layers(configuration* config, const char* name, const char* v
         config->layers = g_slist_append(config->layers, GINT_TO_POINTER(NOPFUSE));
     } else if (strcmp(name, "local") == 0) {
         config->layers = g_slist_append(config->layers, GINT_TO_POINTER(LOCALFUSE));
-    }else {
+    } else if (strcmp(name, "cache") == 0) {
+    	config->layers = g_slist_append(config->layers, GINT_TO_POINTER(CACHE));
+    }
+    else {
         return 0;
     }
     return 1;
@@ -97,6 +100,13 @@ int handle_section_local(configuration* config, const char* name, const char* va
     return 1;
 }
 
+int handle_section_cache(configuration* config, const char* name, const char* value) {
+   if (strcmp(name, "cache") == 0) {
+        (config->cache_config).mode = atoi(value);
+    }
+    return 1;
+}
+
 
 int handle_section_log(configuration* config, const char* name, const char* value) {
     if (strcmp(name, "mode") == 0) {
@@ -118,7 +128,10 @@ int handler(void* config, const char* section, const char* name, const char* val
         return handle_section_multi_loop(config, name, value);
     } else if (strcmp(section, "local") == 0) {
         return handle_section_local(config, name, value);
-    } else {
+    } else if (strcmp(section, "cache") == 0) {
+	return handle_section_cache(config, name, value);
+    }
+      else {
         return 0;
     }
     return 1;

@@ -45,6 +45,6 @@ AC_FUNC_MALLOC
 AC_CHECK_FUNCS([bzero clock_gettime ftruncate gettimeofday lchown memset mkdir mkfifo rmdir strdup strerror strstr])
 
 
-AC_CONFIG_FILES([Makefile layers_impl/align/Makefile layers_impl/loopback/Makefile layers_impl/nop/Makefile layers_impl/crypto/Makefile layers_impl/local/Makefile])
+AC_CONFIG_FILES([Makefile layers_impl/align/Makefile layers_impl/loopback/Makefile layers_impl/nop/Makefile layers_impl/crypto/Makefile layers_impl/local/Makefile layers_impl/cache/Makefile])
 
 AC_OUTPUT

@@ -515,6 +515,7 @@ int init_sfuse_driver(struct fuse_operations **originop, configuration data) {
             enc_driver.get_truncate_size = nop_get_truncate_size_padded;
             break;
         case STANDARD:
+	    DEBUG_MSG("inside standard encryption scheme\n");
             rand_init(data.enc_config.key, (unsigned char *)data.enc_config.key_size, data.enc_config.operation_mode, data.block_config);
             enc_driver.encode = rand_encode;
             enc_driver.decode = rand_decode;

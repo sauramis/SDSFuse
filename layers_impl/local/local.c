@@ -403,6 +403,8 @@ static int xmp_write(const char *path, const char *buf, size_t size,
     strcpy(newpath, rootpath);
     strcat(newpath, path);
 
+    DEBUG_MSG("Inside local write : \n");
+
     (void) fi;
     if(fi == NULL)
         fd = open(newpath, O_WRONLY);
